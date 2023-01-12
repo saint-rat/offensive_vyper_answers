@@ -67,6 +67,7 @@ def withdraw():
     """
     assert self.highest_bidder != msg.sender, "highest bidder may not withdraw"
 
+    #if i can make the next line fail by self destructing balance into it, then it will stop the contract
     assert self.balance == self.total_deposit, "invalid balance"
 
     amount: uint256 = self.deposits[msg.sender]
@@ -108,4 +109,3 @@ def bid():
 @payable
 def __default__():
     self._handle_bid(msg.sender, msg.value)
-
